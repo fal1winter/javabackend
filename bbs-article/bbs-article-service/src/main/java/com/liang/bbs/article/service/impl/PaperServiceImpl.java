@@ -121,7 +121,8 @@ public class PaperServiceImpl implements PaperService {
         dto.setRatingCount(po.getRatingCount());
         dto.setCreateTime(po.getCreateTime());
         dto.setUpdateTime(po.getUpdateTime());
-        
+        dto.setPicUrl(po.getPicUrl());
+        dto.setBio(po.getBio());
         dto.setAuthors(JSON.parseArray(po.getAuthors(), String.class));
         dto.setKeywords(JSON.parseArray(po.getKeywords(), String.class));
         
@@ -146,7 +147,8 @@ public class PaperServiceImpl implements PaperService {
         po.setRatingCount(dto.getRatingCount());
         po.setCreateTime(dto.getCreateTime());
         po.setUpdateTime(dto.getUpdateTime());
-        
+        po.setPicUrl(dto.getPicUrl());
+        po.setBio(dto.getBio());
         po.setAuthors(JSON.toJSONString(dto.getAuthors()));
         po.setKeywords(JSON.toJSONString(dto.getKeywords()));
         
