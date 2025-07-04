@@ -655,6 +655,76 @@ public class PaperPoExample {
             return (Criteria) this;
         }
 
+        public Criteria andAbstracttextIsNull() {
+            addCriterion("abstracttext is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextIsNotNull() {
+            addCriterion("abstracttext is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextEqualTo(String value) {
+            addCriterion("abstracttext =", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextNotEqualTo(String value) {
+            addCriterion("abstracttext <>", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextGreaterThan(String value) {
+            addCriterion("abstracttext >", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextGreaterThanOrEqualTo(String value) {
+            addCriterion("abstracttext >=", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextLessThan(String value) {
+            addCriterion("abstracttext <", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextLessThanOrEqualTo(String value) {
+            addCriterion("abstracttext <=", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextLike(String value) {
+            addCriterion("abstracttext like", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextNotLike(String value) {
+            addCriterion("abstracttext not like", value, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextIn(List<String> values) {
+            addCriterion("abstracttext in", values, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextNotIn(List<String> values) {
+            addCriterion("abstracttext not in", values, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextBetween(String value1, String value2) {
+            addCriterion("abstracttext between", value1, value2, "abstracttext");
+            return (Criteria) this;
+        }
+
+        public Criteria andAbstracttextNotBetween(String value1, String value2) {
+            addCriterion("abstracttext not between", value1, value2, "abstracttext");
+            return (Criteria) this;
+        }
+
         public Criteria andKeywordsIsNull() {
             addCriterion("keywords is null");
             return (Criteria) this;
@@ -805,52 +875,62 @@ public class PaperPoExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreEqualTo(Integer value) {
+        public Criteria andTotalScoreEqualTo(String value) {
             addCriterion("total_score =", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreNotEqualTo(Integer value) {
+        public Criteria andTotalScoreNotEqualTo(String value) {
             addCriterion("total_score <>", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreGreaterThan(Integer value) {
+        public Criteria andTotalScoreGreaterThan(String value) {
             addCriterion("total_score >", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTotalScoreGreaterThanOrEqualTo(String value) {
             addCriterion("total_score >=", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreLessThan(Integer value) {
+        public Criteria andTotalScoreLessThan(String value) {
             addCriterion("total_score <", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreLessThanOrEqualTo(Integer value) {
+        public Criteria andTotalScoreLessThanOrEqualTo(String value) {
             addCriterion("total_score <=", value, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreIn(List<Integer> values) {
+        public Criteria andTotalScoreLike(String value) {
+            addCriterion("total_score like", value, "totalScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalScoreNotLike(String value) {
+            addCriterion("total_score not like", value, "totalScore");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalScoreIn(List<String> values) {
             addCriterion("total_score in", values, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreNotIn(List<Integer> values) {
+        public Criteria andTotalScoreNotIn(List<String> values) {
             addCriterion("total_score not in", values, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreBetween(Integer value1, Integer value2) {
+        public Criteria andTotalScoreBetween(String value1, String value2) {
             addCriterion("total_score between", value1, value2, "totalScore");
             return (Criteria) this;
         }
 
-        public Criteria andTotalScoreNotBetween(Integer value1, Integer value2) {
+        public Criteria andTotalScoreNotBetween(String value1, String value2) {
             addCriterion("total_score not between", value1, value2, "totalScore");
             return (Criteria) this;
         }
@@ -1032,6 +1112,146 @@ public class PaperPoExample {
 
         public Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioIsNull() {
+            addCriterion("bio is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioIsNotNull() {
+            addCriterion("bio is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioEqualTo(String value) {
+            addCriterion("bio =", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioNotEqualTo(String value) {
+            addCriterion("bio <>", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioGreaterThan(String value) {
+            addCriterion("bio >", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioGreaterThanOrEqualTo(String value) {
+            addCriterion("bio >=", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioLessThan(String value) {
+            addCriterion("bio <", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioLessThanOrEqualTo(String value) {
+            addCriterion("bio <=", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioLike(String value) {
+            addCriterion("bio like", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioNotLike(String value) {
+            addCriterion("bio not like", value, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioIn(List<String> values) {
+            addCriterion("bio in", values, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioNotIn(List<String> values) {
+            addCriterion("bio not in", values, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioBetween(String value1, String value2) {
+            addCriterion("bio between", value1, value2, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andBioNotBetween(String value1, String value2) {
+            addCriterion("bio not between", value1, value2, "bio");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlIsNull() {
+            addCriterion("pic_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlIsNotNull() {
+            addCriterion("pic_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlEqualTo(String value) {
+            addCriterion("pic_url =", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlNotEqualTo(String value) {
+            addCriterion("pic_url <>", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlGreaterThan(String value) {
+            addCriterion("pic_url >", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("pic_url >=", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlLessThan(String value) {
+            addCriterion("pic_url <", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlLessThanOrEqualTo(String value) {
+            addCriterion("pic_url <=", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlLike(String value) {
+            addCriterion("pic_url like", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlNotLike(String value) {
+            addCriterion("pic_url not like", value, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlIn(List<String> values) {
+            addCriterion("pic_url in", values, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlNotIn(List<String> values) {
+            addCriterion("pic_url not in", values, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlBetween(String value1, String value2) {
+            addCriterion("pic_url between", value1, value2, "picUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicUrlNotBetween(String value1, String value2) {
+            addCriterion("pic_url not between", value1, value2, "picUrl");
             return (Criteria) this;
         }
     }

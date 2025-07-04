@@ -36,6 +36,13 @@ public class PaperController {
     public ResponseResult<Boolean> create(@RequestBody PaperDTO paperDTO) {
         return ResponseResult.success(paperService.create(paperDTO, UserContextUtils.currentUser()));
     }
+    @NoNeedLogin
+    @PostMapping("addrate")
+    @ApiOperation(value = "增加评分")
+    @ApiVersion(group = ApiVersionConstant.V_300)
+    public ResponseResult<Boolean> addrate(@RequestParam Integer score, @RequestParam Integer id) {
+        return ResponseResult.success(paperService.addrate(score, id, UserContextUtils.currentUser()));
+    }
 
     @PostMapping("update")
     @ApiOperation(value = "更新论文")
@@ -57,5 +64,12 @@ public class PaperController {
     @ApiVersion(group = ApiVersionConstant.V_300)
     public ResponseResult<List<PaperDTO>> getList() {
         return ResponseResult.success(paperService.getList());
+    }
+    @NoNeedLogin
+    @GetMapping("search")
+    @ApiOperation(value = "论文模糊搜索")
+    @ApiVersion(group = ApiVersionConstant.V_300)
+    public ResponseResult<List<PaperDTO>> searchPapers(@RequestParam String keyword) {
+        return ResponseResult.success(paperService.searchPapers(keyword));
     }
 }

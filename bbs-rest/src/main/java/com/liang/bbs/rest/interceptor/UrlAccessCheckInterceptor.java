@@ -30,16 +30,16 @@ public class UrlAccessCheckInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         UserSsoDTO currentUser = UserContextUtils.currentUser();
-        if (currentUser != null) {
-            String uri = request.getRequestURI();
-            // 得到 @PathVariable 的参数和值
-            Object attribute = request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-            Boolean b = urlAccessRightService.checkUrlAccess(currentUser, uri, JSON.toJSONString(attribute));
-            if (!b) {
-                log.info("访问无权限的接口，uri={}, user={}", uri, currentUser);
-                throw BusinessException.build(ResponseCode.URL_ACCESS_REFUSED);
-            }
-        }
+        // if (currentUser != null) {
+        //     String uri = request.getRequestURI();
+        //     // 得到 @PathVariable 的参数和值
+        //     Object attribute = request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+        //     Boolean b = urlAccessRightService.checkUrlAccess(currentUser, uri, JSON.toJSONString(attribute));
+        //     if (!b) {
+        //         log.info("访问无权限的接口，uri={}, user={}", uri, currentUser);
+        //         throw BusinessException.build(ResponseCode.URL_ACCESS_REFUSED);
+        //     }
+        // }
         return true;
     }
 

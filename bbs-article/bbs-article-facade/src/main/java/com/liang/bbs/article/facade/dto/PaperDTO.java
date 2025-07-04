@@ -23,9 +23,11 @@ public class PaperDTO implements Serializable {
     private String conference;
     private Integer citations;
     private Integer favorites;
-    private String abstractText;
+    private String abstractText; // 需要修正为与PO对应的字段名
+    private String bio;          // 新增字段
+    private String picUrl;       // 新增字段
     private String paperUrl;
-    private Integer totalScore;
+    private List<Integer> totalScore;
     private Integer ratingCount;
    
     private List<String> authors;

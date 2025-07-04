@@ -14,4 +14,5 @@ public interface RateService {
     Boolean delete(Integer id, UserSsoDTO currentUser);
     
     List<RateDTO> getByRateIdAndTarget( Integer rateId, String target);
+    
 }

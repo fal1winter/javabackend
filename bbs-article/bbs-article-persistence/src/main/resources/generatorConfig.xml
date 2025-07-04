@@ -54,6 +54,7 @@
                         connectionURL="jdbc:mysql://localhost:3306/ns_bbs?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai"
                         userId="root"
                         password="00000000">
+                        <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -127,18 +128,25 @@
 <!--            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>-->
 <!--        </table>-->
         <!-- 论文 -->
-        <!-- <table tableName="paper" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+        <table tableName="paper" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
                enableDeleteByPrimaryKey="true" domainObjectName="PaperPo">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
             <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
             <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
-        </table> -->
-        <table tableName="user_rating" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+        </table>
+        <!-- <table tableName="user_rating" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
                enableDeleteByPrimaryKey="true" domainObjectName="RatePo">
             <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
             <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
             <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
-        </table>
+        </table> -->
+        <!-- <table tableName="bs_scholar" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" domainObjectName="ScolarPo">
+               <property name="modelType" value="flat"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
+        </table>  -->
 
     </context>
 </generatorConfiguration>

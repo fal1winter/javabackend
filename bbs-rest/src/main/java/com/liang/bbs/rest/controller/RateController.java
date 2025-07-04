@@ -1,6 +1,7 @@
 package com.liang.bbs.rest.controller;
 
 import com.liang.bbs.article.facade.dto.RateDTO;
+import com.liang.bbs.article.facade.server.PaperService;
 import com.liang.bbs.article.facade.server.RateService;
 import com.liang.bbs.rest.config.login.NoNeedLogin;
 import com.liang.bbs.rest.config.swagger.ApiVersion;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 public class RateController {
     @Reference
     private RateService rateService;  // 替换为评分服务
+    @Reference
+    private PaperService paperService;
 
     @NoNeedLogin
     @GetMapping("get/{id}")
@@ -30,12 +33,19 @@ public class RateController {
     public ResponseResult<RateDTO> get(@PathVariable Integer id) {
         return ResponseResult.success(rateService.getById(id));
     }
-
+    @NoNeedLogin
     @PostMapping("create")
     @ApiOperation(value = "创建评分")
     @ApiVersion(group = ApiVersionConstant.V_300)
     public ResponseResult<Boolean> create(@RequestBody RateDTO rateDTO) {
-        return ResponseResult.success(rateService.create(rateDTO, UserContextUtils.currentUser()));
+        Boolean createResult = rateService.create(rateDTO, UserContextUtils.currentUser());
+        
+        // 当满足条件时触发论文评分逻辑
+        if (rateDTO.getTarget() == 0 && rateDTO.getParentId() == null) {
+            paperService.addrate(rateDTO.getRating(), rateDTO.getRateId(), UserContextUtils.currentUser());
+        }
+        
+        return ResponseResult.success(createResult);
     }
 
     @PostMapping("update")
@@ -61,6 +71,6 @@ public class RateController {
         @PathVariable Integer id,
         @PathVariable String target
     ) {
-        return ResponseResult.success(rateService.getByIdandTar(id, target));
+        return ResponseResult.success(rateService.getByRateIdAndTarget(id, target));
     }
 }

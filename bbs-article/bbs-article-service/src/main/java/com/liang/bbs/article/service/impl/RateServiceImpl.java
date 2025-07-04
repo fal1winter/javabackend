@@ -76,12 +76,37 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public List<RateDTO> getByRateIdAndTarget(Integer rateId, String target) {
-        RatePoExample example = new RatePoExample();
-        example.createCriteria()
+        // 获取父级评分
+        RatePoExample parentExample = new RatePoExample();
+        parentExample.createCriteria()
             .andRateIdEqualTo(rateId)
-            .andTargetEqualTo(target);
-        return ratePoMapper.selectByExampleWithBLOBs(example).stream()
+            .andTargetEqualTo(target)
+            .andParentIdIsNull(); // 添加父级条件
+        
+        List<RateDTO> parentRates = ratePoMapper.selectByExampleWithBLOBs(parentExample).stream()
             .map(RateMS.INSTANCE::toDTO)
+            .peek(dto -> {
+                // 递归获取子评分
+                dto.setChildRates(getChildRates(dto.getId(), target));
+                dto.setRepliesCount(dto.getChildRates().size());
+            })
+            .collect(Collectors.toList());
+        
+        return parentRates;
+    }
+    
+    private List<RateDTO> getChildRates(Integer parentId, String target) {
+        RatePoExample childExample = new RatePoExample();
+        childExample.createCriteria()
+            .andParentIdEqualTo(parentId)
+            .andTargetEqualTo(target);
+        
+        return ratePoMapper.selectByExampleWithBLOBs(childExample).stream()
+            .map(RateMS.INSTANCE::toDTO)
+            .peek(dto -> {
+                dto.setDepth(2); // 设置嵌套深度
+                dto.setChildRates(getChildRates(dto.getId(), target));
+            })
             .collect(Collectors.toList());
     }
 }
