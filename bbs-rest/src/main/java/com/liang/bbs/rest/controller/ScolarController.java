@@ -39,7 +39,7 @@ public class ScolarController {
     public ResponseResult<List<ScolarDTO>> getran(Integer numran) {
         return ResponseResult.success(scolarService.getRandom(numran));
     }
-
+    @NoNeedLogin
     @PostMapping("create")
     @ApiOperation(value = "创建学者")
     @ApiVersion(group = ApiVersionConstant.V_300)
