@@ -3,6 +3,8 @@ package com.liang.bbs.article.facade.dto;
 import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 
 @Data
 public class ScolarDTO implements Serializable{
@@ -17,4 +19,5 @@ public class ScolarDTO implements Serializable{
     // 如果需要BLOB字段可以添加以下字段
     private String bio;
     private String collaboratorIds;
+    private List<HashMap<String,Integer>> authorpos;
 }

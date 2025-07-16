@@ -6,10 +6,11 @@ import com.liang.bbs.article.facade.server.PaperService;
 import com.liang.bbs.article.persistence.entity.PaperPo;
 import com.liang.bbs.article.persistence.entity.PaperPoExample;
 import com.liang.bbs.article.persistence.mapper.PaperPoMapper;
+import com.liang.bbs.article.persistence.mapper.PaperPoExMapper;
 import com.liang.nansheng.common.auth.UserSsoDTO;
 import com.liang.nansheng.common.enums.ResponseCode;
 import com.liang.nansheng.common.web.exception.BusinessException;
-
+import java.util.HashMap;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,11 @@ import java.util.stream.Collectors;
 public class PaperServiceImpl implements PaperService {
     @Autowired
     private PaperPoMapper paperPoMapper;
-
+    @Autowired
+    private PaperPoExMapper PaperPoExMapper;
     @Override
     public PaperDTO getById(Integer id) {
-        PaperPo paperPo = paperPoMapper.selectByPrimaryKey(id);
+        PaperPo paperPo = PaperPoExMapper.selectPaperWithAuthors(id);
         if (paperPo == null) {
             throw BusinessException.build(ResponseCode.DATA_ILLEGAL, "论文不存在");
         }
@@ -34,8 +36,16 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public List<PaperDTO> getList() {
-        return null;
+    public List<PaperDTO> getList(Integer num) {
+        List<PaperPo> paperPos = paperPoMapper.selectRandom(num);
+        
+        // 保持原有的DTO转换逻辑
+        return paperPos.stream()
+            .map(po -> {
+                PaperDTO dto = convertToDTO(po);
+                return dto;
+            })
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -102,6 +112,7 @@ public class PaperServiceImpl implements PaperService {
         }
         return true;
     }
+    
 
     private PaperDTO convertToDTO(PaperPo po) {
         if (po == null) {
@@ -125,7 +136,7 @@ public class PaperServiceImpl implements PaperService {
         dto.setBio(po.getBio());
         dto.setAuthors(JSON.parseArray(po.getAuthors(), String.class));
         dto.setKeywords(JSON.parseArray(po.getKeywords(), String.class));
-        
+        dto.setAuthorpos(po.getAuthorpos());
         return dto;
     }
 
@@ -179,4 +190,10 @@ public class PaperServiceImpl implements PaperService {
             .map(this::convertToDTO)  // 替换PaperMS.INSTANCE::toDTO
             .collect(Collectors.toList());
     }
+
+    // @Override
+    // public List<Integer> getauthbyId(Integer id) {
+    //     // TODO Auto-generated method stub
+    //     return paperPoMapper.getauthbyId(id);
+    // }
 }

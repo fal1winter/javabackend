@@ -59,11 +59,11 @@ public class PaperController {
     }
 
     @NoNeedLogin
-    @GetMapping("getList")
+    @GetMapping("getList/{num}")
     @ApiOperation(value = "获取论文列表")
     @ApiVersion(group = ApiVersionConstant.V_300)
-    public ResponseResult<List<PaperDTO>> getList() {
-        return ResponseResult.success(paperService.getList());
+    public ResponseResult<List<PaperDTO>> getList(@PathVariable Integer num) {
+        return ResponseResult.success(paperService.getList(num));
     }
     @NoNeedLogin
     @GetMapping("search")

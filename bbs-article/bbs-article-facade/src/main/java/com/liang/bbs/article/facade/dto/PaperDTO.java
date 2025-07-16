@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -32,5 +33,6 @@ public class PaperDTO implements Serializable {
    
     private List<String> authors;
     private List<String> keywords;
+    private List<HashMap<String,Integer>> authorpos;
     
 }

@@ -6,6 +6,7 @@ import com.liang.bbs.article.facade.server.ScolarService;
 import com.liang.bbs.article.persistence.entity.ScolarPo;
 import com.liang.bbs.article.persistence.entity.ScolarPoWithBLOBs;
 import com.liang.bbs.article.persistence.mapper.ScolarPoMapper;
+import com.liang.bbs.article.persistence.mapper.ScolarPoExMapper;
 import com.liang.bbs.article.service.mapstruct.ScolarMS;
 import com.liang.nansheng.common.auth.UserSsoDTO;
 import com.liang.nansheng.common.enums.ResponseCode;
@@ -21,14 +22,18 @@ import java.util.stream.Collectors;
 public class ScolarServiceImpl implements ScolarService {
     @Autowired
     private ScolarPoMapper scolarPoMapper;
+    @Autowired
+    private ScolarPoExMapper ScolarPoExMapper;
 
     @Override
     public ScolarDTO getById(Integer id) {
-        ScolarPoWithBLOBs po = scolarPoMapper.selectByPrimaryKey(id);
+        ScolarPoWithBLOBs po = ScolarPoExMapper.selectByPrimaryKey(id);
         if (po == null) {
             throw BusinessException.build(ResponseCode.DATA_ILLEGAL, "学者不存在");
         }
-        return ScolarMS.INSTANCE.toDTO(po);
+        ScolarDTO scolar = ScolarMS.INSTANCE.toDTO(po);
+        scolar.setAuthorpos(po.getAuthorpos());
+        return scolar;
     }
 
  

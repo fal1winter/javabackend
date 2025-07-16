@@ -436,4 +436,12 @@
       pic_url = #{picUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 新增随机查询语句 -->
+  <select id="selectRandom" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  SELECT 
+  <include refid="Base_Column_List" />
+  FROM paper
+  ORDER BY RAND()
+  LIMIT #{num,jdbcType=INTEGER}
+  </select>
 </mapper>
