@@ -48,7 +48,7 @@ interceptor:
 
 cookie:
   # cookie写在对应的域名下
-  domain: localhost.com
+  domain: papervote.top
 
 # swagger打开
 swagger:

@@ -48,5 +48,4 @@ public interface CommonMS<P, D> {
      * @return dto
      */
     PageInfo<D> toPage(PageInfo<P> pageInfo);
-
 }

@@ -43,7 +43,7 @@
         </plugin>
 
         <!-- 自定义注解-start -->
-        <commentGenerator type="com.liang.nansheng.mybatis.generator.QnloftCommentGenerator">
+        <commentGenerator type="org.mybatis.generator.internal.DefaultCommentGenerator">
             <!-- 定义是否生成原生注释，我们这里自定义了，所以选择false -->
             <property name="suppressAllComments" value="false"/>
             <!-- This property is used to specify whether MBG will include the generation timestamp in the generated comments -->
@@ -53,24 +53,25 @@
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/ns_bbs?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai"
                         userId="root"
-                        password="777888">
+                        password="00000000">
+                        <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置 -->
         <javaModelGenerator targetPackage="com.liang.bbs.article.persistence.entity"
-                            targetProject="./src/main/java">
+                            targetProject="/Volumes/banana/javabackend/bbs-article/bbs-article-persistence/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成的映射文件包名和位置 -->
-        <sqlMapGenerator targetPackage="mybatis/mappers" targetProject="./src/main/resources">
+        <sqlMapGenerator targetPackage="mybatis/mappers" targetProject="/Volumes/banana/javabackend/bbs-article/bbs-article-persistence/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置（mapper） -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.liang.bbs.article.persistence.mapper"
-                             targetProject="./src/main/java">
+                             targetProject="/Volumes/banana/javabackend/bbs-article/bbs-article-persistence/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -126,6 +127,26 @@
 <!--            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>-->
 <!--            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>-->
 <!--        </table>-->
+        <!-- 论文 -->
+        <table tableName="paper" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" domainObjectName="PaperPo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
+        </table>
+        <!-- <table tableName="user_rating" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" domainObjectName="RatePo">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
+        </table> -->
+        <!-- <table tableName="bs_scholar" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" domainObjectName="ScolarPo">
+               <property name="modelType" value="flat"/>
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime"/>
+        </table>  -->
 
     </context>
-</generatorConfiguration>  
+</generatorConfiguration>
