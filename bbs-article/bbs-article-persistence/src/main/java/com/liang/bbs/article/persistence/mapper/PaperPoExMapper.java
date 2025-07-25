@@ -2,6 +2,8 @@ package com.liang.bbs.article.persistence.mapper;
 
 import com.liang.bbs.article.persistence.entity.PaperPo;
 import com.liang.bbs.article.persistence.entity.PaperPoExample;
+
+import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -78,4 +80,8 @@ public interface PaperPoExMapper {
      */
 
     List<PaperPo> selectRandom(Integer num);
+    List<PaperPo> selectRandompaper(Integer num);
+    List<HashMap<String,Integer>>  selectposbypaper(List<Integer> paperIds);
+    List<Integer>  selectValidIds(Integer num);
+    List<PaperPo> selectbyList(@Param("aIds")List<Integer> aIds);
 }

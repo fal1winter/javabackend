@@ -14,7 +14,7 @@ public class ScolarDTO implements Serializable{
     private String institution;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
-    private Integer totalrate;
+    private String totalrate;
     private Integer ratenum;
     // 如果需要BLOB字段可以添加以下字段
     private String bio;

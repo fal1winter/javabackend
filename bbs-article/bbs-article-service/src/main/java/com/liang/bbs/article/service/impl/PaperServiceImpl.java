@@ -37,15 +37,20 @@ public class PaperServiceImpl implements PaperService {
 
     @Override
     public List<PaperDTO> getList(Integer num) {
-        List<PaperPo> paperPos = paperPoMapper.selectRandom(num);
+        // List<PaperPo> paperPos = PaperPoExMapper.selectRandom(num);
         
-        // 保持原有的DTO转换逻辑
-        return paperPos.stream()
-            .map(po -> {
-                PaperDTO dto = convertToDTO(po);
-                return dto;
-            })
-            .collect(Collectors.toList());
+        // // 保持原有的DTO转换逻辑
+        // return paperPos.stream()
+        //     .map(po -> {
+        //         PaperDTO dto = convertToDTO(po);
+        //         return dto;
+        //     })
+        //     .collect(Collectors.toList());
+        List<Integer> ids = PaperPoExMapper.selectValidIds(num);
+        List<PaperPo> paperPos = PaperPoExMapper.selectbyList(ids) ;
+            return paperPos.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

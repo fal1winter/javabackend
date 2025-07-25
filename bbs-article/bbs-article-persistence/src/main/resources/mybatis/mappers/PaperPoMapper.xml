@@ -122,8 +122,13 @@
     -->
     select 
     <include refid="Base_Column_List" />
-    from paper
-    where id = #{id,jdbcType=INTEGER}
+    ,
+    
+    ap.paper_id,
+    ap.position
+    from paper p
+    LEFT JOIN bbs_paper_author ap ON p.id = ap.author_id
+    where p.id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--

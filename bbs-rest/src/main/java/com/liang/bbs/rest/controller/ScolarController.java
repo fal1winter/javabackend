@@ -1,6 +1,8 @@
 package com.liang.bbs.rest.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.liang.bbs.article.facade.dto.ScolarDTO;
+import com.liang.bbs.article.facade.dto.ScolarSearchDTO;
 import com.liang.bbs.article.facade.server.ScolarService;
 import com.liang.bbs.rest.config.login.NoNeedLogin;
 import com.liang.bbs.rest.config.swagger.ApiVersion;
@@ -61,5 +63,12 @@ public class ScolarController {
     @ApiVersion(group = ApiVersionConstant.V_300)
     public ResponseResult<Boolean> delete(@PathVariable Integer id) {
         return ResponseResult.success(scolarService.delete(id));
+    }
+    @NoNeedLogin
+    @PostMapping("searchfuzz")
+    @ApiOperation(value = "模糊多条件搜索")
+    @ApiVersion(group = ApiVersionConstant.V_300)
+    public PageInfo<ScolarDTO> searchfuzz(@RequestBody ScolarSearchDTO searchDTO) {
+        return scolarService.searchfuzz(searchDTO);
     }
 }

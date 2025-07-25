@@ -72,7 +72,7 @@ public class ScolarPo implements Serializable {
      *
      * @mbg.generated
      */
-    private Integer totalrate;
+    private String totalrate;
 
     /**
      *
